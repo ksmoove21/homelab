@@ -2,6 +2,12 @@
 
 UNSC is my multi-site infrastructure homelab, built around systems, storage, networking, and virtualization. It brings together enterprise hardware, virtualized platforms, and cloud services for hands-on engineering and experimentation.
 
+## The Lab
+
+<p align="center">
+  <img src="assets/unsc-rack.jpg" alt="UNSC Homelab Rack" width="450" />
+</p>
+
 ## Architecture
 
 ```mermaid
