@@ -105,5 +105,6 @@ flowchart TB
 
 ## Related Projects
 
+- [Homelab Projects Directory](https://github.com/ksmoove21/homelab-projects)
 - [EVE-NG Automation](https://github.com/ksmoove21/eve-ng-automation)
 - [UNSC DN42](https://github.com/ksmoove21/unsc-dn42)
