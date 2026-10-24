@@ -83,6 +83,17 @@ flowchart TB
 
 *Core to Border and Border to Cerberus are 40 GbE physical links. Cerberus is the routed security boundary for protected lab networks.*
 
+## Explore the Infrastructure
+
+<table>
+  <tr>
+    <td valign="top" width="100%">
+      <h3><a href="networking/README.md">🌐 Networking</a></h3>
+      <p>Routing · Switching · SD-WAN · Inter-Site Connectivity</p>
+    </td>
+  </tr>
+</table>
+
 ## Hardware & Platforms
 
 | Category | Platforms |
