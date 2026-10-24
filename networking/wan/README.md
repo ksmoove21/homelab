@@ -52,31 +52,15 @@ At home, the HE 6in4 path terminates on **c4331-md01** and exchanges IPv6 reacha
 
 ## Inter-Site Routing
 
-**Catalyst SD-WAN** connects three distinct environments, each with a different infrastructure role:
+**Catalyst SD-WAN** connects three UNSC environments with distinct infrastructure roles:
 
-| Location | Provider / infrastructure | Role |
-| --- | --- | --- |
-| **UNSC Home (Maryland)** | Residential Internet; UDM-SE, Cerberus, and ISR4331 | Shared Internet edge, protected lab, and primary on-premises infrastructure |
-| **Cybertron (New York)** | **MyInterServer**, dedicated physical **ESXi** host | Remote virtualization, Chimera firewall, Catalyst 8000V SD-WAN edge, and hosted applications |
-| **Vultr New Jersey** | Vultr cloud infrastructure | Catalyst 8000V SD-WAN edge, public DN42 routing, CrowdSec, Dashy, and RD Gateway |
+| Location | Connectivity & Infrastructure |
+| --- | --- |
+| **[Maryland \| Home Base](../home-base/README.md)** | Shared residential edge, Cerberus security boundary, on-premises compute, and ISR4331 SD-WAN edge |
+| **[Cybertron](../cybertron/README.md)** | MyInterServer dedicated ESXi host, Chimera, and a Catalyst 8000V SD-WAN edge |
+| **[Vultr Cloud](../vultr-cloud/README.md)** | New Jersey cloud routing, DN42 edge, CrowdSec, Dashy, and remote-access services |
 
-### Cybertron at MyInterServer
-
-Cybertron is a **dedicated physical server hosted by MyInterServer**, with ESXi providing the virtualization layer. Its workloads include:
-
-- **Chimera**, the Palo Alto VM-Series firewall and local routed-security boundary.
-- A **Cisco Catalyst 8000V** participating in the UNSC SD-WAN fabric.
-- **Active Directory domain controllers** and **two Windows NPS servers**.
-- A **Veeam server** supporting remote backup and recovery.
-- Dedicated **GoGo web application servers**.
-
-Cybertron has its own provider Internet attachment and public-facing services. Chimera governs Cybertron's routed traffic, published services, and local security boundaries. Because the virtual network and hosted services share a single physical ESXi host, that host and the MyInterServer connection are meaningful remote-site failure dependencies.
-
-### Vultr New Jersey
-
-Vultr is a separate cloud-based UNSC site. It provides a Catalyst SD-WAN endpoint, MikroTik CHR for DN42, CrowdSec threat processing, Dashy, and the fitgibbon RD Gateway. These services support external routing and cross-site operations from Vultr's independent cloud infrastructure.
-
-The SD-WAN fabric carries selected network reachability among all three sites. Each local security boundary remains responsible for its own traffic policy.
+Each site owns its local routing and security responsibilities while using the SD-WAN fabric for selected intersite reachability.
 
 ## Externally Consumable Services
 

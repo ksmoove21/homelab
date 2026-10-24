@@ -6,37 +6,50 @@
 
 [← UNSC Homelab](../README.md) | [Homelab Projects](https://github.com/ksmoove21/homelab-projects)
 
-UNSC connects a shared home Internet edge, a dedicated lab security boundary, high-speed server and storage networking, and remote sites. The design reflects where infrastructure is shared, where it is isolated, and why the switching and routing platforms serve different purposes.
+UNSC connects its Maryland home base, a dedicated ESXi host at Cybertron, and cloud infrastructure at Vultr New Jersey. Each environment serves a different purpose, with shared routing and SD-WAN connectivity bringing the network together.
 
-## Explore Networking
+## Explore the Sites
+
+<table>
+<tr>
+<td width="33%" valign="top">
+<h3><a href="home-base/README.md">Maryland | Home Base</a></h3>
+<p>UDM-SE, MikroTik core, Cerberus, Nexus border, and the physical lab.</p>
+</td>
+<td width="33%" valign="top">
+<h3><a href="cybertron/README.md">Cybertron</a></h3>
+<p>MyInterServer, dedicated ESXi, Chimera, identity services, and hosted applications.</p>
+</td>
+<td width="33%" valign="top">
+<h3><a href="vultr-cloud/README.md">Vultr Cloud</a></h3>
+<p>Cloud routing, DN42, CrowdSec, Dashy, and remote access.</p>
+</td>
+</tr>
+</table>
+
+## Explore the Design
 
 <table>
 <tr>
 <td width="50%" valign="top">
 <h3><a href="architecture/README.md">Architecture & Design Decisions</a></h3>
-<p>Cerberus, the shared edge, the MikroTik core, and the Nexus border.</p>
+<p>How the shared edge, routed security boundaries, and high-speed lab fabric fit together.</p>
 </td>
 <td width="50%" valign="top">
 <h3><a href="wan/README.md">WAN & External Routing</a></h3>
-<p>Internet access, public IPv4, IPv6, BGP, DN42, and Catalyst SD-WAN.</p>
+<p>UNSC Net, public address space, Internet providers, BGP, and intersite connectivity.</p>
 </td>
 </tr>
 </table>
 
-## The Network at a Glance
+## Network at a Glance
 
-| Domain | Role |
+| Domain | Platforms |
 | --- | --- |
-| **Shared edge** | UDM-SE, Xfinity, T-Mobile |
-| **Physical aggregation** | MikroTik CRS326 |
-| **Lab boundary** | Cerberus PA-5220 |
-| **High-speed fabric** | Nexus 92160YC-X, 40 GbE core and firewall handoffs |
-| **Remote connectivity** | Catalyst SD-WAN, Cybertron, Vultr New Jersey |
-| **External routing** | BGP, Free Range Cloud public IPv4, IPv6, DN42 |
+| **Shared Internet edge** | UDM-SE, Xfinity, T-Mobile |
+| **Core & fabric** | MikroTik CRS326, Cisco Nexus 92160YC-X |
+| **Security boundaries** | Cerberus PA-5220, Chimera VM-Series |
+| **Intersite routing** | Cisco Catalyst SD-WAN |
+| **External connectivity** | UNSC Net, Free Range Cloud, Hurricane Electric, DN42 |
 
-The [main architecture diagram](../README.md#architecture) provides the site-level view. These pages explain the reasoning behind it without publishing device configurations or internal addressing.
-
-## Related Projects
-
-- [UNSC DN42](https://github.com/ksmoove21/unsc-dn42)
-- [EVE-NG Automation](https://github.com/ksmoove21/eve-ng-automation)
+[View the UNSC topology](../README.md#architecture) · [All Homelab Projects](https://github.com/ksmoove21/homelab-projects)

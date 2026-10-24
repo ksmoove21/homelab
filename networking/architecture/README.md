@@ -47,4 +47,10 @@ Those are the **physical** links. Logically, Cerberus remains the routed securit
 
 This separation lets the household retain its own shared infrastructure while lab routing, segmentation, and experiments follow dedicated security boundaries.
 
+## Explore Site Architecture
+
+- [Maryland | Home Base](../home-base/README.md)
+- [Cybertron](../cybertron/README.md)
+- [Vultr Cloud](../vultr-cloud/README.md)
+
 [View the site-level diagram](../../README.md#architecture) · [Explore WAN connectivity](../wan/README.md)
