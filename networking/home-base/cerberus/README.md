@@ -4,7 +4,7 @@
 
 # Cerberus | Routing & Security Domains
 
-[← Home Base](../README.md) | [Networking](../../README.md) | [WAN](../../wan/README.md)
+[← Home Base](../README.md) | [Nexus VRFs & BGP](../nexus/README.md) | [Networking](../../README.md) | [WAN](../../wan/README.md)
 
 **Cerberus**, a Palo Alto PA-5220, is the routing and security center of the Maryland lab. The 40 GbE connection to the Nexus carries its segmented lab handoffs, while additional interfaces connect WAN, SD-WAN, management, and externally routed services.
 

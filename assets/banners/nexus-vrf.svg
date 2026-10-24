@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="420" viewBox="0 0 1600 420" role="img" aria-labelledby="title desc">
+  <title id="title">UNSC Nexus VRF Fabric and BGP</title>
+  <desc id="desc">A cinematic military-inspired network operations banner with metallic typography, abstract switch ports, and interconnected routing nodes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#09131f"/>
+      <stop offset="0.52" stop-color="#12283a"/>
+      <stop offset="1" stop-color="#050c13"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0f4f2"/>
+      <stop offset="0.53" stop-color="#acbfcb"/>
+      <stop offset="1" stop-color="#607e94"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6bdddf"/>
+      <stop offset="0.65" stop-color="#1a759b"/>
+      <stop offset="1" stop-color="#d99d56"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#4f8aab" stroke-opacity="0.13" stroke-width="1"/>
+    </pattern>
+    <filter id="glow"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+  <rect width="1600" height="420" fill="url(#bg)"/>
+  <rect width="1600" height="420" fill="url(#grid)"/>
+  <path d="M0 385L455 225L850 285L1200 90L1600 160" fill="none" stroke="#4e99b6" stroke-opacity=".14" stroke-width="90"/>
+  <path d="M-50 416L520 230L890 270L1240 58L1620 124" fill="none" stroke="#7ddcef" stroke-opacity=".12" stroke-width="3"/>
+  <rect x="59" y="49" width="8" height="327" fill="#8ccddc" opacity=".76"/>
+  <rect x="60" y="49" width="700" height="3" fill="url(#accent)" opacity=".85"/>
+  <path d="M65 377H815" stroke="url(#accent)" stroke-width="3"/>
+  <path d="M805 377l20-20h155" stroke="#6db8cb" stroke-width="2" fill="none" opacity=".58"/>
+  <text x="100" y="111" fill="#83c9d5" font-size="29" font-weight="700" font-family="Arial, Helvetica, sans-serif" letter-spacing="9">UNSC HOMELAB</text>
+  <text x="94" y="244" fill="url(#metal)" font-size="137" font-weight="900" font-family="Arial Black, Arial, sans-serif" letter-spacing="3">NEXUS</text>
+  <text x="101" y="303" fill="#e6eef3" font-size="42" font-weight="700" font-family="Arial, Helvetica, sans-serif" letter-spacing="7">VRF FABRIC &amp; BGP</text>
+  <text x="103" y="354" fill="#9abec9" font-size="18" font-family="Arial, Helvetica, sans-serif" letter-spacing="5">MARYLAND  /  HOME BASE</text>
+  <g opacity="0.83">
+    <rect x="925" y="94" width="603" height="278" rx="16" fill="#07121d" stroke="#60a5bd" stroke-opacity=".63" stroke-width="2"/>
+    <rect x="942" y="110" width="569" height="246" rx="12" fill="#0b2234" stroke="#31647d" stroke-opacity=".55"/>
+    <path d="M940 153H1512M940 287H1512" stroke="#1d6283" stroke-width="2" opacity=".55"/>
+    <g fill="none" stroke="#65b7cb" stroke-width="3" stroke-linecap="round">
+      <path d="M988 215L1133 170L1265 216L1430 165"/>
+      <path d="M988 215L1133 262L1265 216L1430 265"/>
+      <path d="M1133 170L1133 262M1265 216L1265 283M1430 165V265"/>
+    </g>
+    <g fill="#9edfea" stroke="#091824" stroke-width="6">
+      <circle cx="988" cy="215" r="15"/>
+      <circle cx="1133" cy="170" r="15"/>
+      <circle cx="1133" cy="262" r="15"/>
+      <circle cx="1265" cy="216" r="19"/>
+      <circle cx="1430" cy="165" r="15"/>
+      <circle cx="1430" cy="265" r="15"/>
+    </g>
+    <g fill="#66c1d9" opacity=".63">
+      <rect x="979" y="123" width="30" height="5" rx="2"/>
+      <rect x="1020" y="123" width="22" height="5" rx="2"/>
+      <rect x="1053" y="123" width="54" height="5" rx="2"/>
+      <rect x="1380" y="326" width="95" height="4" rx="2"/>
+      <rect x="1205" y="326" width="155" height="4" rx="2"/>
+    </g>
+  </g>
+  <path d="M1548 53h-83M1548 53v83" fill="none" stroke="#d49d5c" stroke-width="4"/>
+  <path d="M1590 5h-75M1590 5v75" fill="none" stroke="#5cb2c6" stroke-width="3" opacity=".35"/>
+  <path d="M0 0H1600" stroke="#5a9db1" stroke-width="5"/>
+</svg>

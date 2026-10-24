@@ -11,10 +11,16 @@ Maryland is the physical foundation of UNSC: the shared Internet edge, protected
 ## Explore Home Base
 
 <table>
-<tr><td>
-<h3><a href="cerberus/README.md">Cerberus: Routing & Security Domains</a></h3>
-<p>Palo Alto virtual routers, internal ASNs, BGP peerings, and the lab's routing boundaries.</p>
-</td></tr>
+<tr>
+<td width="50%" valign="top">
+<h3><a href="cerberus/README.md">Cerberus: Routing & Security</a></h3>
+<p>Palo Alto virtual routers, security domains, and BGP.</p>
+</td>
+<td width="50%" valign="top">
+<h3><a href="nexus/README.md">Nexus: VRF Fabric & BGP</a></h3>
+<p>Service segmentation, VXLAN VNIs, and Cerberus peerings.</p>
+</td>
+</tr>
 </table>
 
 ## Network Architecture
@@ -39,4 +45,4 @@ The Nexus provides the server/storage data plane. ESXi hosts connect at dual 10 
 
 Home Base hosts the vSphere compute and EVE-NG clusters, Alpha/TrueNAS storage, Janus/Hyper-V, Hornet backup and file services, and supporting identity, monitoring, and administration services.
 
-[Explore Cerberus](cerberus/README.md) · [View the overall topology](../../README.md#architecture) · [Homelab Projects](https://github.com/ksmoove21/homelab-projects)
+[Explore Cerberus](cerberus/README.md) · [Explore Nexus VRFs](nexus/README.md) · [View the overall topology](../../README.md#architecture) · [Homelab Projects](https://github.com/ksmoove21/homelab-projects)
