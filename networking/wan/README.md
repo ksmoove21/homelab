@@ -6,7 +6,7 @@
 
 [← Networking](../README.md) | [UNSC Homelab](../../README.md) | [Architecture & Design Decisions](../architecture/README.md)
 
-UNSC is more than an internal LAN. It has multiple Internet transports, routed public IPv4 space, IPv6 connectivity, an autonomous system on DN42, and a Catalyst SD-WAN fabric connecting local and remote infrastructure.
+UNSC extends beyond its home network through independent remote hosting, public address resources, and routed connectivity. **UNC Net** is the public autonomous-system identity behind this growing environment, while Catalyst SD-WAN and external routing services connect home infrastructure with Cybertron and Vultr New Jersey.
 
 ## WAN Connectivity
 
@@ -16,17 +16,18 @@ UNSC is more than an internal LAN. It has multiple Internet transports, routed p
 | **T-Mobile 5G** | Backup Internet transport |
 | **Free Range Cloud** | Public IPv4 prefixes routed over WireGuard to the home edge |
 | **Hurricane Electric** | IPv6 tunnel-based reachability through the Maryland ISR and Cerberus |
-| **Vultr New Jersey** | Cloud site with independent global IPv6 routing and SD-WAN integration |
+| **MyInterServer / Cybertron** | Dedicated physical ESXi host, independent public Internet attachment, and Catalyst SD-WAN connectivity |
+| **Vultr New Jersey** | Cloud site with independent global IPv6 routing, DN42 edge, and SD-WAN integration |
 | **DN42** | External overlay routing and service-provider experimentation |
 
 ## Routing Identity
 
 | ASN | Scope |
 | --- | --- |
-| **AS4242421995** | Registered DN42 autonomous system and external overlay peering identity |
-| **AS65000** | Private BGP autonomous system on the home UDM-SE |
+| **AS218293** | **UNC Net**, public Internet autonomous system |
+| **AS4242421995** | Registered DN42 autonomous system for the separate DN42 overlay |
 
-These are distinct routing contexts. The DN42 ASN is not presented as a globally assigned Internet transit ASN; future public-ASN and multihoming designs are excluded from this current-state overview.
+UNC Net's public ASN establishes an Internet routing identity; it does not, by itself, establish that prefixes are already being announced under AS218293. The active provider handoffs and the next stage of public-ASN multihoming are separate from this baseline overview. Private lab BGP ASNs and inter-domain peering decisions belong in a dedicated internal BGP architecture page.
 
 ## Public IPv4 Addressing
 
@@ -53,15 +54,31 @@ At home, the HE 6in4 path terminates on **c4331-md01** and exchanges IPv6 reacha
 
 ## Inter-Site Routing
 
-**Catalyst SD-WAN** connects three primary environments:
+**Catalyst SD-WAN** connects three distinct environments, each with a different infrastructure role:
 
-| Location | Network role |
-| --- | --- |
-| **UNSC Home** | Shared edge, Cerberus policy boundary, and Maryland SD-WAN edge |
-| **Cybertron** | Remote virtualization and Chimera security boundary, with its own SD-WAN edge |
-| **Vultr New Jersey** | Cloud SD-WAN edge, DN42 routing, and supporting services |
+| Location | Provider / infrastructure | Role |
+| --- | --- | --- |
+| **UNSC Home (Maryland)** | Residential Internet; UDM-SE, Cerberus, and ISR4331 | Shared Internet edge, protected lab, and primary on-premises infrastructure |
+| **Cybertron (New York)** | **MyInterServer**, dedicated physical **ESXi** host | Remote virtualization, Chimera firewall, Catalyst 8000V SD-WAN edge, and hosted applications |
+| **Vultr New Jersey** | Vultr cloud infrastructure | Catalyst 8000V SD-WAN edge, public DN42 routing, CrowdSec, Dashy, and RD Gateway |
 
-The SD-WAN fabric carries selected network reachability between sites. It does not remove the requirement for the local firewall boundaries to enforce access policy.
+### Cybertron at MyInterServer
+
+Cybertron is not another Vultr instance. It is a **dedicated physical server hosted by MyInterServer** with ESXi providing the virtualization layer. Its workloads include:
+
+- **Chimera**, the Palo Alto VM-Series firewall and local routed-security boundary.
+- A **Cisco Catalyst 8000V** participating in the UNSC SD-WAN fabric.
+- **Active Directory domain controllers** and **two Windows NPS servers**.
+- A **Veeam server** supporting remote backup and recovery.
+- Dedicated **GoGo web application servers**.
+
+Cybertron has its own provider Internet attachment and public-facing services. Its routed and published traffic is governed by Chimera's local security boundaries rather than assuming the home firewall controls all remote activity. Because the virtual network and hosted services share a single physical ESXi host, that host and the MyInterServer connection are meaningful remote-site failure dependencies.
+
+### Vultr New Jersey
+
+Vultr is a separate cloud-based UNSC site. It provides a Catalyst SD-WAN endpoint, MikroTik CHR for DN42, CrowdSec threat processing, Dashy, and the fitgibbon RD Gateway. These services support external routing and cross-site operations without being hosted on Cybertron's dedicated ESXi server.
+
+The SD-WAN fabric carries selected network reachability among all three sites. Each local security boundary remains responsible for its own traffic policy.
 
 ## Externally Consumable Services
 
