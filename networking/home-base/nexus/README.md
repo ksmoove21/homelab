@@ -14,11 +14,13 @@ The **Cisco Nexus 92160YC-X** is the high-speed switching and segmented routing 
 | :---: | :---: | :---: |
 | **21** | **17** | **40 GbE each** |
 
-## Why the Fabric Is Segmented
+## Routing Design
 
-Rather than placing every infrastructure service into one routed production network, UNSC uses dedicated **VRFs** for identity, file services, backups, monitoring, virtualization, storage management, and other workloads.
+Nexus uses dedicated **VRFs** for identity, file services, backups, monitoring, virtualization, storage management, and other workloads. Each service retains an independent route table.
 
-The Nexus associates these routed domains with **VXLAN EVPN Layer 3 VNIs** and distinct transit networks toward Cerberus. This lets the fabric provide high-speed local switching and per-service routing while the Palo Alto firewall enforces traffic policy across security domains.
+These VRFs are associated with **VXLAN EVPN Layer 3 VNIs** and separate routed transit interfaces toward Cerberus. BGP distributes reachability through the relevant routing contexts.
+
+The [Security Architecture](../../../security/README.md) documents why the service VRFs map to individual firewall zones and how inter-service traffic is controlled.
 
 The physical design matches the workload demand:
 
@@ -78,12 +80,12 @@ The Nexus configuration includes BGP neighbor definitions for **13 BlueLine VRFs
 
 The `greenline_pc` VRF also contains an additional peer in **AS66542**, while `test_vrf` has a separate lab peer in **AS65500**.
 
-## Nexus and Cerberus: Two Different Responsibilities
+## Routing Relationships
 
-**Nexus** provides the switching capacity, VRF separation, VXLAN EVPN data plane, and local gateway functions for attached service networks.
+**Nexus** provides the high-speed switching fabric, independent VRF route tables, VXLAN EVPN connectivity, and local gateway interfaces.
 
-**Cerberus** provides the routed policy boundary between the protected environments, upstream connectivity, and other UNSC domains. Dedicated Nexus-to-firewall transits preserve the separation as routes cross from one domain to another.
+**Cerberus** receives the relevant VRF BGP peerings and provides routed connectivity to the shared edge and other UNSC routing domains.
 
-This design allows shared compute and storage hardware to support many infrastructure services while keeping their routing and policy boundaries distinct.
+[Explore service-level security policy](../../../security/cerberus/README.md).
 
 [Explore Cerberus](../cerberus/README.md) · [← Maryland | Home Base](../README.md) · [UNSC Topology](../../../README.md#architecture)

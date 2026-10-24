@@ -87,9 +87,13 @@ flowchart TB
 
 <table>
   <tr>
-    <td valign="top" width="100%">
-      <h3><a href="networking/README.md">🌐 Networking</a></h3>
+    <td valign="top" width="50%">
+      <h3><a href="networking/README.md">Networking</a></h3>
       <p>Routing · Switching · SD-WAN · Inter-Site Connectivity</p>
+    </td>
+    <td valign="top" width="50%">
+      <h3><a href="security/README.md">Security</a></h3>
+      <p>Segmentation · Firewall Policy · IPS · CrowdSec</p>
     </td>
   </tr>
 </table>
@@ -103,6 +107,7 @@ flowchart TB
 | Compute | Dell PowerEdge, Cisco UCS |
 | Virtualization | VMware vSphere, Microsoft Hyper-V, EVE-NG |
 | Storage | TrueNAS SCALE, QNAP, Windows Storage Spaces |
+
 ## Services
 
 | Area | Services |

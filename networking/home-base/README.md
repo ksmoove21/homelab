@@ -13,8 +13,8 @@ Maryland is the physical foundation of UNSC: the shared Internet edge, protected
 <table>
 <tr>
 <td width="50%" valign="top">
-<h3><a href="cerberus/README.md">Cerberus: Routing & Security</a></h3>
-<p>Palo Alto virtual routers, security domains, and BGP.</p>
+<h3><a href="cerberus/README.md">Cerberus: Routing & BGP</a></h3>
+<p>Palo Alto virtual routers, routing domains, and peerings.</p>
 </td>
 <td width="50%" valign="top">
 <h3><a href="nexus/README.md">Nexus: VRF Fabric & BGP</a></h3>
@@ -29,7 +29,7 @@ Maryland is the physical foundation of UNSC: the shared Internet edge, protected
 | --- | --- |
 | **UNSC-EDGE-01** | Shared household and lab Internet edge, with Xfinity and T-Mobile connectivity |
 | **UNSC-CORE-01** | MikroTik CRS326 bringing household and lab infrastructure together at a common aggregation point |
-| **Cerberus** | PA-5220 providing the lab's routed security, inter-domain policy, and BGP boundaries |
+| **Cerberus** | PA-5220 providing lab virtual routers and inter-domain BGP exchange |
 | **UNSC-BORDER-01** | Nexus 92160YC-X concentrating lab compute, storage, and firewall-facing traffic |
 | **c4331-md01** | Catalyst SD-WAN edge for intersite connectivity and Hurricane Electric IPv6 transport |
 
@@ -37,7 +37,7 @@ Maryland is the physical foundation of UNSC: the shared Internet edge, protected
 
 The UDM-SE's two 10 GbE SFP+ ports provide one high-speed WAN connection and one high-speed LAN connection. The MikroTik core distributes that LAN handoff across the shared home and lab infrastructure.
 
-Behind the shared aggregation layer, **Cerberus defines where the protected lab begins**. Its virtual routers separate production, personal, experimental, management, WAN, remote-access, and DN42 traffic.
+Behind the shared aggregation layer, **Cerberus defines where the protected lab begins**. Its virtual routers handle production, personal, experimental, management, WAN, remote-access, and DN42 route exchange. [Security Architecture](../../security/README.md) explains the corresponding policy zones.
 
 The Nexus provides the server/storage data plane. ESXi hosts connect at dual 10 GbE, while TrueNAS has dual 25 GbE links. **Core ↔ Border and Border ↔ Cerberus run at 40 GbE**, preserving port capacity and supporting concurrent storage and backup activity.
 
@@ -45,4 +45,4 @@ The Nexus provides the server/storage data plane. ESXi hosts connect at dual 10 
 
 Home Base hosts the vSphere compute and EVE-NG clusters, Alpha/TrueNAS storage, Janus/Hyper-V, Hornet backup and file services, and supporting identity, monitoring, and administration services.
 
-[Explore Cerberus](cerberus/README.md) · [Explore Nexus VRFs](nexus/README.md) · [View the overall topology](../../README.md#architecture) · [Homelab Projects](https://github.com/ksmoove21/homelab-projects)
+[Explore Cerberus](cerberus/README.md) · [Security Architecture](../../security/README.md) · [Explore Nexus VRFs](nexus/README.md) · [View the overall topology](../../README.md#architecture) · [Homelab Projects](https://github.com/ksmoove21/homelab-projects)

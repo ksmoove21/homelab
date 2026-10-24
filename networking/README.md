@@ -4,7 +4,7 @@
 
 # Networking
 
-[← UNSC Homelab](../README.md) | [Homelab Projects](https://github.com/ksmoove21/homelab-projects)
+[← UNSC Homelab](../README.md) | [Security Architecture](../security/README.md) | [Homelab Projects](https://github.com/ksmoove21/homelab-projects)
 
 UNSC connects its Maryland home base, a dedicated ESXi host at Cybertron, and cloud infrastructure at Vultr New Jersey. Each environment serves a different purpose, with shared routing and SD-WAN connectivity bringing the network together.
 
@@ -48,8 +48,8 @@ UNSC connects its Maryland home base, a dedicated ESXi host at Cybertron, and cl
 | --- | --- |
 | **Shared Internet edge** | UDM-SE, Xfinity, T-Mobile |
 | **Core & fabric** | MikroTik CRS326, Cisco Nexus 92160YC-X |
-| **Security boundaries** | Cerberus PA-5220, Chimera VM-Series |
+| **Routing boundaries** | Cerberus PA-5220, Chimera VM-Series |
 | **Intersite routing** | Cisco Catalyst SD-WAN |
 | **External connectivity** | UNSC Net, Free Range Cloud, Hurricane Electric, DN42 |
 
-[View the UNSC topology](../README.md#architecture) · [All Homelab Projects](https://github.com/ksmoove21/homelab-projects)
+[Security architecture](../security/README.md) · [View the UNSC topology](../README.md#architecture) · [All Homelab Projects](https://github.com/ksmoove21/homelab-projects)

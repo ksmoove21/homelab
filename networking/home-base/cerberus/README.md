@@ -2,11 +2,11 @@
   <img src="../../../assets/banners/architecture.webp" alt="UNSC Cerberus Routing and Security" width="100%" />
 </p>
 
-# Cerberus | Routing & Security Domains
+# Cerberus | Routing & BGP
 
 [← Home Base](../README.md) | [Nexus VRFs & BGP](../nexus/README.md) | [Networking](../../README.md) | [WAN](../../wan/README.md)
 
-**Cerberus**, a Palo Alto PA-5220, is the routing and security center of the Maryland lab. The 40 GbE connection to the Nexus carries its segmented lab handoffs, while additional interfaces connect WAN, SD-WAN, management, and externally routed services.
+**Cerberus**, a Palo Alto PA-5220, provides the routed-domain handoffs for the Maryland lab. The 40 GbE connection to the Nexus carries its segmented lab handoffs, while additional interfaces connect WAN, SD-WAN, management, and externally routed services.
 
 ## Virtual Routers
 
@@ -20,7 +20,7 @@
 | **WAN** | Internet, public-address services, and WAN transit |
 | **DN42** | DN42 transit and protected enclave routing |
 
-These seven routing domains let Cerberus apply policy between distinct parts of the lab while connecting them to the shared physical network.
+These seven virtual routers maintain the site's separate route tables and inter-domain connectivity.
 
 ## BGP Architecture
 
@@ -40,12 +40,12 @@ This provides separate routing relationships for production, personal, and exper
 
 The **DN42 virtual router uses AS4200001995**. It exchanges DN42 routes with **c4331-md01**, which transports the external and trusted intersite DN42 routing contexts over Catalyst SD-WAN.
 
-The DN42 connection passes through Cerberus before the corresponding services join the protected lab routing domains. Blueline also participates in the site's SD-WAN and upstream IPv6 reachability.
+DN42 routes reach Cerberus through the Maryland SD-WAN edge and its separate routed DN42 handoffs. Blueline also participates in the site's SD-WAN and upstream IPv6 reachability.
 
-## Policy Boundaries
+## Service VRF Routing
 
-Cerberus combines its virtual routers with security zones and explicit traffic policy. The WAN and DMZ are separated from trusted lab segments; management and remote access have dedicated routing contexts; and public-facing services pass through their relevant security controls.
+Nexus service VRFs establish their BGP peerings with the matching Cerberus virtual-router domains. The Nexus routes service networks within its individual VRF tables; Cerberus maintains the corresponding upstream and inter-domain route exchange.
 
-The physical Nexus fabric moves traffic among attached systems, while Cerberus handles routed traffic crossing these security domains.
+For service-zone mappings, firewall rules, and east-west access enforcement, see [Cerberus Security](../../../security/cerberus/README.md).
 
 [← Maryland | Home Base](../README.md) · [Explore the WAN](../../wan/README.md)

@@ -10,11 +10,11 @@ UNSC has a shared household edge and a more deliberately isolated engineering en
 
 ## Where the Lab Begins: Cerberus
 
-**Cerberus**, a Palo Alto PA-5220, defines the routed security boundary for the protected lab. It provides inter-zone routing, segmentation and access policy, and the control point for traffic moving between the lab's routed domains and outside networks.
+**Cerberus**, a Palo Alto PA-5220, defines the routed security boundary for the protected lab. Its virtual routers provide the routing handoffs for traffic moving between lab domains, upstream networks, and the remote sites. The [Security documentation](../../security/README.md) covers zone-policy enforcement.
 
-The UDM-SE and parts of the physical core support both household and lab connectivity. Those shared roles are intentional. Cerberus owns the lab's routed security policy while shared upstream devices provide physical connectivity.
+The UDM-SE and parts of the physical core support both household and lab connectivity. Those shared roles are intentional. Cerberus owns the lab's routed inter-domain handoffs while shared upstream devices provide physical connectivity.
 
-Traffic within the same Layer 2 segment can stay on the Nexus fabric; traffic that crosses the protected lab's routed policy boundaries is handled by Cerberus.
+Traffic within the same Layer 2 segment can stay on the Nexus fabric; traffic moving between routing domains follows the relevant Nexus and Cerberus route tables.
 
 ## Why the MikroTik Core?
 
@@ -41,11 +41,11 @@ Those are the **physical** links. Logically, Cerberus remains the routed securit
 | --- | --- |
 | **UNSC-EDGE-01** | Shared Internet entry and WAN failover |
 | **UNSC-CORE-01** | Common aggregation for household and lab connectivity |
-| **Cerberus** | Routed policy and security boundary defining the protected lab |
+| **Cerberus** | Virtual-router aggregation, external routing exchange, and routed lab handoffs |
 | **UNSC-BORDER-01** | High-speed server, storage, and firewall data plane |
-| **Chimera** | Independent remote-site security boundary at Cybertron |
+| **Chimera** | Remote-site virtual routers and SD-WAN routing handoff at Cybertron |
 
-This separation lets the household retain its own shared infrastructure while lab routing, segmentation, and experiments follow dedicated security boundaries.
+This separation lets shared household services and dedicated lab routing coexist while keeping each site's routing responsibilities distinct.
 
 ## Explore Site Architecture
 

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 420" role="img" aria-label="THREAT INTELLIGENCE banner">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#080f18"/><stop offset=".6" stop-color="#102a3a"/><stop offset="1" stop-color="#060e18"/></linearGradient>
+<linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#69d4ec"/><stop offset=".63" stop-color="#1a7996"/><stop offset="1" stop-color="#d8a362"/></linearGradient>
+<pattern id="mesh" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#5ab4ce" stroke-opacity=".11" stroke-width="1"/></pattern>
+<filter id="glow"><feGaussianBlur stdDeviation="7"/></filter>
+</defs>
+<rect width="1600" height="420" fill="url(#bg)"/><rect width="1600" height="420" fill="url(#mesh)"/>
+<path d="M0 5H1600M0 415H1600" stroke="#60c6e1" stroke-opacity=".7" stroke-width="3"/>
+<path d="M0 330L430 330L500 370H880L950 330L1600 330" fill="none" stroke="#3689a4" stroke-opacity=".38" stroke-width="2"/>
+<path d="M980 42L1530 42L1570 82V320L1510 350H1000" fill="none" stroke="#378fa9" stroke-opacity=".55" stroke-width="2"/>
+<path d="M-25 65L82 65L102 87V275L79 299H0" fill="none" stroke="#d8a362" stroke-width="4"/>
+<path d="M45 120L72 98L99 120V158L72 176L45 158Z" fill="#092737" stroke="#6ec8dd" stroke-width="3"/>
+<path d="M72 112V160M52 136H92" stroke="#d5a261" stroke-width="4"/>
+<text x="125" y="70" font-family="Arial,sans-serif" font-size="25" letter-spacing="8" fill="#a5d8e5">UNSC HOMELAB / SECURITY DOMAIN</text>
+<text x="125" y="194" font-family="Arial,sans-serif" font-size="88" font-weight="900" letter-spacing="3" fill="#f1f2ee">THREAT INTELLIGENCE</text>
+<rect x="126" y="218" width="456" height="4" fill="url(#accent)"/>
+<text x="127" y="266" font-family="Arial,sans-serif" font-size="24" letter-spacing="4" fill="#8ac6d5">CROWDSEC  |  DETECTION  |  CORRELATION</text>
+<text x="127" y="378" font-family="Arial,sans-serif" font-size="22" letter-spacing="4" fill="#dcb782">COLLECT  /  ANALYZE  /  ENFORCE</text>
+<circle cx="1305" cy="180" r="165" fill="#3bc5ea" opacity=".055" filter="url(#glow)"/>
+<circle cx="1305" cy="180" r="150" fill="none" stroke="#398eac" stroke-opacity=".24" stroke-width="2"/>
+<circle cx="1305" cy="180" r="112" fill="none" stroke="#4daac8" stroke-opacity=".25" stroke-dasharray="10 10"/>
+<rect x="1070" y="205" width="15" height="95" rx="3" fill="#e8ac69" opacity="0.14"/><rect x="1104" y="184" width="15" height="116" rx="3" fill="#1f819f" opacity="0.21000000000000002"/><rect x="1138" y="163" width="15" height="137" rx="3" fill="#1f819f" opacity="0.28"/><rect x="1172" y="142" width="15" height="158" rx="3" fill="#e8ac69" opacity="0.14"/><rect x="1206" y="121" width="15" height="179" rx="3" fill="#1f819f" opacity="0.21000000000000002"/><rect x="1240" y="205" width="15" height="95" rx="3" fill="#1f819f" opacity="0.28"/><rect x="1274" y="184" width="15" height="116" rx="3" fill="#e8ac69" opacity="0.14"/><rect x="1308" y="163" width="15" height="137" rx="3" fill="#1f819f" opacity="0.21000000000000002"/><rect x="1342" y="142" width="15" height="158" rx="3" fill="#1f819f" opacity="0.28"/><rect x="1376" y="121" width="15" height="179" rx="3" fill="#e8ac69" opacity="0.14"/><rect x="1410" y="205" width="15" height="95" rx="3" fill="#1f819f" opacity="0.21000000000000002"/><rect x="1444" y="184" width="15" height="116" rx="3" fill="#1f819f" opacity="0.28"/><rect x="1478" y="163" width="15" height="137" rx="3" fill="#e8ac69" opacity="0.14"/>
+<path d="M1125 101L1190 150" stroke="url(#accent)" stroke-width="2" stroke-opacity=".72"/><path d="M1190 150L1335 93" stroke="url(#accent)" stroke-width="2" stroke-opacity=".72"/><path d="M1335 93L1410 165" stroke="url(#accent)" stroke-width="2" stroke-opacity=".72"/><path d="M1190 150L1286 246" stroke="url(#accent)" stroke-width="2" stroke-opacity=".72"/><path d="M1286 246L1500 275" stroke="url(#accent)" stroke-width="2" stroke-opacity=".72"/><path d="M1286 246L1160 300" stroke="url(#accent)" stroke-width="2" stroke-opacity=".72"/><path d="M1410 165L1500 275" stroke="url(#accent)" stroke-width="2" stroke-opacity=".72"/>
+<circle cx="1125" cy="101" r="7" fill="#071f2d" stroke="#65cde5" stroke-width="3"/><circle cx="1190" cy="150" r="7" fill="#071f2d" stroke="#d8a362" stroke-width="3"/><circle cx="1335" cy="93" r="7" fill="#071f2d" stroke="#65cde5" stroke-width="3"/><circle cx="1410" cy="165" r="7" fill="#071f2d" stroke="#d8a362" stroke-width="3"/><circle cx="1286" cy="246" r="12" fill="#071f2d" stroke="#65cde5" stroke-width="3"/><circle cx="1500" cy="275" r="7" fill="#071f2d" stroke="#d8a362" stroke-width="3"/><circle cx="1160" cy="300" r="7" fill="#071f2d" stroke="#65cde5" stroke-width="3"/>
+<text x="1512" y="384" font-family="Arial,sans-serif" font-size="15" fill="#719baa" text-anchor="end" letter-spacing="3">UNSC / 04</text>
+</svg>
