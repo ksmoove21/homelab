@@ -24,10 +24,10 @@ UNSC extends beyond its home network through independent remote hosting, public 
 
 | ASN | Scope |
 | --- | --- |
-| **AS218293** | **UNC Net**, public Internet autonomous system |
+| **AS218293** | **UNSC Net**, public Internet autonomous system |
 | **AS4242421995** | Registered DN42 autonomous system for the separate DN42 overlay |
 
-UNC Net's public ASN establishes an Internet routing identity; it does not, by itself, establish that prefixes are already being announced under AS218293. The active provider handoffs and the next stage of public-ASN multihoming are separate from this baseline overview. Private lab BGP ASNs and inter-domain peering decisions belong in a dedicated internal BGP architecture page.
+UNSC Net's public ASN establishes an Internet routing identity; it does not, by itself, establish that prefixes are already being announced under AS218293. The active provider handoffs and the next stage of public-ASN multihoming are separate from this baseline overview. Private lab BGP ASNs and inter-domain peering decisions belong in a dedicated internal BGP architecture page.
 
 ## Public IPv4 Addressing
 
