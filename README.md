@@ -92,7 +92,16 @@ flowchart TB
 | Compute | Dell PowerEdge, Cisco UCS |
 | Virtualization | VMware vSphere, Microsoft Hyper-V, EVE-NG |
 | Storage | TrueNAS SCALE, QNAP, Windows Storage Spaces |
-| Services | Active Directory, DNS, PKI, Veeam, Graylog, CrowdSec, Dashy |
+## Services
+
+| Area | Services |
+| --- | --- |
+| Identity & Access | Active Directory, DNS, PKI, Windows NPS |
+| File & Storage | Windows File Server (DFS), NFS, iSCSI, FileZilla FTP Server |
+| Backup & Configuration | Veeam, Luminous (configuration backup) |
+| Networking & Labs | Catalyst SD-WAN, Nexus Dashboard, EVE-NG, UniFi Network Optimizer |
+| Monitoring & Security | CrowdSec, LibreNMS, Graylog, sexygraph |
+| Applications & Communications | Plex, Dashy, IIS SMTP Relay, Cisco Unified Communications Manager 14 (internal VoIP) |
 
 ## Related Projects
 
