@@ -1,58 +1,94 @@
-<h1>JWipe - Disk Sanitization</h1>
+# UNSC Homelab
 
- ### [YouTube Demonstration](https://youtu.be/7eJexJVCqJo)
+UNSC is my multi-site infrastructure homelab, built around systems, storage, networking, and virtualization. It brings together enterprise hardware, virtualized platforms, and cloud services for hands-on engineering and experimentation.
 
-<h2>Description</h2>
-Project consists of a simple PowerShell script that walks the user through "zeroing out" (wiping) any drives that are connected to the system. The utility allows you to select the target disk and choose the number of passes that are performed. The PowerShell script will configure a diskpart script file based on the user's selections and then launch Diskpart to perform the disk sanitization.
-<br />
+## Architecture
 
+```mermaid
+%%{init: {'theme':'dark','themeVariables': {'background':'#111113','primaryColor':'#19191c','primaryTextColor':'#f3e7e8','primaryBorderColor':'#d77b85','lineColor':'#d77b85','clusterBkg':'#121215','clusterBorder':'#ae626b'}}}%%
+flowchart TB
+    X(["Xfinity"])
+    T(["T-Mobile"])
 
-<h2>Languages and Utilities Used</h2>
+    subgraph HOME["UNSC HOME"]
+        direction TB
+        EDGE["UNSC-EDGE-01"]
+        CORE["UNSC-CORE-01"]
+        CER["Cerberus"]
+        BORDER["UNSC-BORDER-01"]
+        MD["c4331-md01"]
 
-- <b>PowerShell</b> 
-- <b>Diskpart</b>
+        subgraph LAB["LAB"]
+            direction LR
+            COMPUTE["Mercury · Neptune · Uranus"]
+            EVE["Earth · Jupiter · Mars<br/>Reach · Titan · Venus"]
+            ALPHA["Alpha"]
+            JANUS["Janus · Hornet"]
+        end
 
-<h2>Environments Used </h2>
+        EDGE --> CORE
+        CORE --> CER
+        CORE <-. "40 GbE" .-> BORDER
+        CER <-->|"40 GbE"| BORDER
+        BORDER --- COMPUTE
+        BORDER --- EVE
+        BORDER --- ALPHA
+        BORDER --- JANUS
+        CER --- MD
+    end
 
-- <b>Windows 10</b> (21H2)
+    subgraph CYBER["CYBERTRON"]
+        direction TB
+        NY["C8000V-NY01"]
+        CHIM["Chimera"]
+        ESXI["Cybertron"]
+        NY --- CHIM
+        CHIM --- ESXI
+    end
 
-<h2>Program walk-through:</h2>
+    subgraph NJ["VULTR NEW JERSEY"]
+        direction TB
+        NJEDGE["C8000V-NJ01"]
+        DN42["UNSC-DN42-EDGE02"]
+        CS["CrowdSec"]
+        DASH["Dashy"]
+        FIT["fitgibbon"]
+        NJEDGE --- DN42
+    end
 
-<p align="center">
-Launch the utility: <br/>
-<img src="https://i.imgur.com/62TgaWL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Select the disk:  <br/>
-<img src="https://i.imgur.com/tcTyMUE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Enter the number of passes: <br/>
-<img src="https://i.imgur.com/nCIbXbg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Confirm your selection:  <br/>
-<img src="https://i.imgur.com/cdFHBiU.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Wait for process to complete (may take some time):  <br/>
-<img src="https://i.imgur.com/JL945Ga.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Sanitization complete:  <br/>
-<img src="https://i.imgur.com/K71yaM2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
+    FABRIC(["SD-WAN"])
+    X --> EDGE
+    T -.-> EDGE
+    MD --- FABRIC
+    NY --- FABRIC
+    NJEDGE --- FABRIC
 
-<!--
- ```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
+    classDef device fill:#19191c,stroke:#d77b85,color:#f3e7e8,stroke-width:1.5px
+    classDef security fill:#2b1a20,stroke:#ff929d,color:#fff3f4,stroke-width:2px
+    classDef service fill:#211c29,stroke:#b991d5,color:#f3e7f7,stroke-width:1.3px
+    class X,T,EDGE,CORE,BORDER,MD,COMPUTE,EVE,ALPHA,JANUS,NY,ESXI,NJEDGE,DN42,FABRIC device
+    class CER,CHIM security
+    class CS,DASH,FIT service
+    style HOME fill:#111113,stroke:#ae626b,color:#f3e7e8
+    style LAB fill:#161619,stroke:#77717f,color:#f3e7e8
+    style CYBER fill:#111113,stroke:#ae626b,color:#f3e7e8
+    style NJ fill:#111113,stroke:#ae626b,color:#f3e7e8
 ```
---!>
+
+*Core to Border and Border to Cerberus are 40 GbE physical links. Cerberus is the routed security boundary for protected lab networks.*
+
+## Hardware & Platforms
+
+| Category | Platforms |
+| --- | --- |
+| Networking | Cisco Nexus, Cisco ISR/C8000V, MikroTik, UniFi |
+| Security | Palo Alto PA-5220, VM-Series |
+| Compute | Dell PowerEdge, Cisco UCS |
+| Virtualization | VMware vSphere, Microsoft Hyper-V, EVE-NG |
+| Storage | TrueNAS SCALE, QNAP, Windows Storage Spaces |
+| Services | Active Directory, DNS, PKI, Veeam, Graylog, CrowdSec, Dashy |
+
+## Related Projects
+
+- [EVE-NG Automation](https://github.com/ksmoove21/eve-ng-automation)
+- [UNSC DN42](https://github.com/ksmoove21/unsc-dn42)
