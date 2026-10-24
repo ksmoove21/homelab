@@ -6,7 +6,7 @@
 
 [← Networking](../README.md) | [UNSC Homelab](../../README.md) | [Architecture & Design Decisions](../architecture/README.md)
 
-UNSC extends beyond its home network through independent remote hosting, public address resources, and routed connectivity. **UNC Net** is the public autonomous-system identity behind this growing environment, while Catalyst SD-WAN and external routing services connect home infrastructure with Cybertron and Vultr New Jersey.
+UNSC extends beyond its home network through independent remote hosting, public address resources, and routed connectivity. **UNSC Net** is the public autonomous-system identity behind this growing environment, while Catalyst SD-WAN and external routing services connect home infrastructure with Cybertron and Vultr New Jersey.
 
 ## WAN Connectivity
 
@@ -27,8 +27,6 @@ UNSC extends beyond its home network through independent remote hosting, public 
 | **AS218293** | **UNSC Net**, public Internet autonomous system |
 | **AS4242421995** | Registered DN42 autonomous system for the separate DN42 overlay |
 
-UNSC Net's public ASN establishes an Internet routing identity; it does not, by itself, establish that prefixes are already being announced under AS218293. The active provider handoffs and the next stage of public-ASN multihoming are separate from this baseline overview. Private lab BGP ASNs and inter-domain peering decisions belong in a dedicated internal BGP architecture page.
-
 ## Public IPv4 Addressing
 
 UNSC currently uses two **Free Range Cloud /29** blocks:
@@ -38,7 +36,7 @@ UNSC currently uses two **Free Range Cloud /29** blocks:
 | **142.202.91.216/29** | Public DMZ segment connected at the UDM-SE edge |
 | **142.202.91.96/29** | Public block routed onward from the UDM-SE toward Cerberus |
 
-Free Range Cloud functions as a **routed public upstream over WireGuard**, not merely an outbound consumer VPN. Public source addresses are preserved where intended, and inbound access remains subject to edge and firewall policy.
+Free Range Cloud provides a **routed public IPv4 upstream over WireGuard**. Public source addresses are preserved where intended, and inbound access remains subject to edge and firewall policy.
 
 ## IPv6 Networks
 
@@ -48,9 +46,9 @@ Free Range Cloud functions as a **routed public upstream over WireGuard**, not m
 | **fd16:2e38:95d2::/48** | Registered DN42 IPv6 allocation, used within the DN42 routing domain |
 | **2001:470:e15a::/48** | Hurricane Electric routed IPv6 space used by the home-side IPv6 environment |
 
-The first two represent different kinds of address resources: globally routable IPv6 and DN42 overlay addressing. The Hurricane Electric prefix is **provider-routed space**, not being claimed here as independently held address space.
+Global IPv6 and DN42 addressing serve distinct routing domains. Hurricane Electric provides the home-side routed IPv6 prefix.
 
-At home, the HE 6in4 path terminates on **c4331-md01** and exchanges IPv6 reachability through Cerberus. The separate Vultr-routed global prefix is not assumed to use that same home-side tunnel.
+At home, the HE 6in4 path terminates on **c4331-md01** and exchanges IPv6 reachability through Cerberus. Vultr New Jersey provides independent global IPv6 routing.
 
 ## Inter-Site Routing
 
@@ -64,7 +62,7 @@ At home, the HE 6in4 path terminates on **c4331-md01** and exchanges IPv6 reacha
 
 ### Cybertron at MyInterServer
 
-Cybertron is not another Vultr instance. It is a **dedicated physical server hosted by MyInterServer** with ESXi providing the virtualization layer. Its workloads include:
+Cybertron is a **dedicated physical server hosted by MyInterServer**, with ESXi providing the virtualization layer. Its workloads include:
 
 - **Chimera**, the Palo Alto VM-Series firewall and local routed-security boundary.
 - A **Cisco Catalyst 8000V** participating in the UNSC SD-WAN fabric.
@@ -72,17 +70,17 @@ Cybertron is not another Vultr instance. It is a **dedicated physical server hos
 - A **Veeam server** supporting remote backup and recovery.
 - Dedicated **GoGo web application servers**.
 
-Cybertron has its own provider Internet attachment and public-facing services. Its routed and published traffic is governed by Chimera's local security boundaries rather than assuming the home firewall controls all remote activity. Because the virtual network and hosted services share a single physical ESXi host, that host and the MyInterServer connection are meaningful remote-site failure dependencies.
+Cybertron has its own provider Internet attachment and public-facing services. Chimera governs Cybertron's routed traffic, published services, and local security boundaries. Because the virtual network and hosted services share a single physical ESXi host, that host and the MyInterServer connection are meaningful remote-site failure dependencies.
 
 ### Vultr New Jersey
 
-Vultr is a separate cloud-based UNSC site. It provides a Catalyst SD-WAN endpoint, MikroTik CHR for DN42, CrowdSec threat processing, Dashy, and the fitgibbon RD Gateway. These services support external routing and cross-site operations without being hosted on Cybertron's dedicated ESXi server.
+Vultr is a separate cloud-based UNSC site. It provides a Catalyst SD-WAN endpoint, MikroTik CHR for DN42, CrowdSec threat processing, Dashy, and the fitgibbon RD Gateway. These services support external routing and cross-site operations from Vultr's independent cloud infrastructure.
 
 The SD-WAN fabric carries selected network reachability among all three sites. Each local security boundary remains responsible for its own traffic policy.
 
 ## Externally Consumable Services
 
-The routed WAN design allows selected services to be published or reached through approved public and overlay paths. A prefix being routable does **not** mean all addresses or services are exposed. Publication is intentional and policy-controlled at the UDM-SE and Palo Alto boundaries.
+Selected services are published and reached through approved public and overlay paths, with UDM-SE and Palo Alto policies governing access.
 
 For the external routing and enclave design, see [UNSC DN42](https://github.com/ksmoove21/unsc-dn42).
 
