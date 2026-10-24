@@ -12,7 +12,7 @@ UNSC has a shared household edge and a more deliberately isolated engineering en
 
 **Cerberus**, a Palo Alto PA-5220, defines the routed security boundary for the protected lab. It provides inter-zone routing, segmentation and access policy, and the control point for traffic moving between the lab's routed domains and outside networks.
 
-The UDM-SE and parts of the physical core support both household and lab connectivity. Those shared roles are intentional. A device being physically upstream of the lab does not automatically make it the lab's security boundary.
+The UDM-SE and parts of the physical core support both household and lab connectivity. Those shared roles are intentional. Cerberus owns the lab's routed security policy while shared upstream devices provide physical connectivity.
 
 Traffic within the same Layer 2 segment can stay on the Nexus fabric; traffic that crosses the protected lab's routed policy boundaries is handled by Cerberus.
 
@@ -22,7 +22,7 @@ The **UDM-SE has two 10 GbE SFP+ interfaces**. In this design, one serves WAN co
 
 **UNSC-CORE-01**, a MikroTik CRS326, gives these networks a common physical aggregation point rather than asking the UDM-SE to provide separate high-speed uplinks for every domain. Household traffic can traverse the same switching platform without becoming part of the protected lab.
 
-The core is therefore shared *physically*, but its design direction is increasingly lab-centric. Terminating additional WireGuard tunnels directly on the core is a **planned extension**, not a claim that those tunnels are already operational there.
+The core is therefore shared *physically*, but its design direction is increasingly lab-centric. The next planned extension is direct WireGuard tunnel termination on the core.
 
 ## Why the Nexus Border?
 
@@ -33,7 +33,7 @@ The physical TrueNAS system has **dual 25 GbE** connectivity, while physical ESX
 - **Core ↔ Border:** 40 GbE
 - **Border ↔ Cerberus:** 40 GbE
 
-Those are the **physical** links. Logically, Cerberus remains the routed security boundary for protected lab domains. The 40 GbE links reduce unnecessary pressure on 10 GbE front-panel capacity; they are not a claim that every individual workload operates at 40 Gb/s.
+Those are the **physical** links. Logically, Cerberus remains the routed security boundary for protected lab domains. The 40 GbE links preserve 10 GbE front-panel capacity and provide aggregate headroom for concurrent workloads.
 
 ## How the Roles Fit Together
 
